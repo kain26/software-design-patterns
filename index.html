@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="用 Three.js 动画理解 10 个常用设计模式里的对象、调用和职责。">
+<title>设计模式实验室 · Design Patterns Lab</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23242655'/%3E%3Cpath fill='%23f5ce64' d='m16 5 10 6v10l-10 6-10-6V11z'/%3E%3Cpath fill='none' stroke='%23242655' stroke-width='2' d='m6 11 10 6 10-6m-10 6v10'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./style.css">
+<script type="module" src="./app.mjs"></script>
+</head>
+<body>
+<header class="masthead">
+  <div class="mast-inner">
+    <div class="brand">
+      <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><path fill="#f5ce64" d="m16 3 11 6v13l-11 7-11-7V9z"/><path fill="none" stroke="#242655" stroke-width="1.8" d="m5 9 11 7 11-7m-11 7v13"/></svg>
+      <span>设计模式实验室</span>
+    </div>
+    <span class="mast-meta">Design Patterns Lab</span>
+  </div>
+</header>
+<main>
+  <div class="layout">
+    <nav id="catalog" aria-label="设计模式目录"></nav>
+    <article class="lesson" aria-labelledby="pattern-name">
+      <header class="lesson-header">
+        <div class="pattern-topic"><span id="category"></span><span id="pattern-zh"></span></div>
+        <h1 id="pattern-name">Strategy</h1>
+        <p id="intro">让结账流程保持原样，把折扣算法换成可插拔的对象。</p>
+      </header>
+      <div class="workbench">
+        <section class="demo" aria-label="三维动画演示">
+          <div class="stage-bar">
+            <span class="stage-title"><i aria-hidden="true"></i>对象协作</span>
+            <output id="count">准备开始</output>
+          </div>
+          <div id="stage" class="stage">
+            <canvas id="canvas" aria-hidden="true"></canvas>
+            <div id="labels" class="labels" aria-hidden="true"></div>
+            <div id="packet" class="packet" aria-hidden="true" hidden></div>
+            <p id="fallback" class="fallback" hidden></p>
+          </div>
+          <div class="controls">
+            <button type="button" id="play" class="primary"><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">播放</span></button>
+            <button type="button" id="prev" class="icon-btn" aria-label="上一步">←</button>
+            <button type="button" id="next" class="icon-btn" aria-label="下一步">→</button>
+            <button type="button" id="reset" class="icon-btn" aria-label="重置">↺</button>
+            <label class="speed"><span>速度</span>
+              <select id="speed" aria-label="播放速度"><option value=".6">0.6×</option><option value="1" selected>1×</option><option value="1.6">1.6×</option></select>
+            </label>
+          </div>
+        </section>
+        <aside class="guide" aria-label="步骤讲解">
+          <div class="guide-current" aria-live="polite">
+            <span id="phase" class="phase">开始前</span>
+            <h2 id="step-title">先看对象的职责</h2>
+            <p id="step-text"></p>
+            <code id="current-call" hidden></code>
+          </div>
+          <ol id="timeline" class="timeline" aria-label="选择动画步骤"></ol>
+        </aside>
+      </div>
+      <section class="notes" aria-label="模式说明">
+        <div><h2>什么时候用</h2><p id="use"></p></div>
+        <div><h2>要权衡什么</h2><p id="cost"></p></div>
+      </section>
+      <details class="code-panel"><summary>查看 Java 调用示例</summary><pre><code id="example"></code></pre></details>
+    </article>
+  </div>
+  <noscript>请启用 JavaScript 后查看动画和模式说明。</noscript>
+</main>
+</body>
+</html>
