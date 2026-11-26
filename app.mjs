@@ -13,7 +13,7 @@ let lastCall;
 const stage = createStage({stage:$('stage'),canvas:$('canvas'),labels:$('labels'),packet:$('packet'),fallback:$('fallback')}, draw);
 const tabs = new Map();
 
-for (const group of ['行为型','创建型','结构型']) {
+for (const group of ['Behavioral','Creational','Structural']) {
   const section = document.createElement('section');
   section.className = 'catalog-group';
   const heading = document.createElement('h2');
@@ -42,7 +42,6 @@ function select(item) {
   }
   $('category').textContent = pattern.group;
   $('pattern-name').textContent = pattern.name;
-  $('pattern-zh').textContent = pattern.zh;
   for (const id of ['intro','use','cost']) $(id).textContent = pattern[id];
   $('example').textContent = pattern.code;
   timeline.replaceChildren(...pattern.steps.map((step,i) => {
@@ -72,7 +71,7 @@ function duration(step) {
 }
 
 function syncControls() {
-  $('play-label').textContent = playing ? '暂停' : (index === pattern.steps.length-1 && elapsed >= duration(pattern.steps[index]) ? '重播' : '播放');
+  $('play-label').textContent = playing ? 'Pause' : (index === pattern.steps.length-1 && elapsed >= duration(pattern.steps[index]) ? 'Replay' : 'Play');
   $('play-icon').textContent = playing ? 'Ⅱ' : '▶';
   $('prev').disabled = index < 0;
   $('next').disabled = index >= pattern.steps.length-1;
@@ -102,10 +101,10 @@ function draw() {
 
 function showStep() {
   const step = pattern.steps[index];
-  $('phase').textContent = step ? `第 ${index+1} 步` : '开始前';
-  $('count').textContent = `${index+1} / ${pattern.steps.length} 步`;
-  $('step-title').textContent = step?.title ?? '先看对象的职责';
-  $('step-text').textContent = step?.text ?? '按播放走完整个调用，或点选任意步骤。黄色标记沿调用方向移动。';
+  $('phase').textContent = step ? `Step ${index+1}` : 'Before you start';
+  $('count').textContent = `${index+1} / ${pattern.steps.length} steps`;
+  $('step-title').textContent = step?.title ?? 'Meet the objects';
+  $('step-text').textContent = step?.text ?? 'Play the full interaction or select a step. Follow the yellow marker to see where each call goes.';
   [...timeline.children].forEach((row,i) => {
     if (i === index) row.firstElementChild.setAttribute('aria-current','step');
     else row.firstElementChild.removeAttribute('aria-current');

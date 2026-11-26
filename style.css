@@ -7,7 +7,7 @@
   --scene:#e8f2fb;
   --indigo:#4947a5;
   --yellow:#f5ce64;
-  font-family:"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  font-family:"Helvetica Neue",Arial,sans-serif;
   color:var(--ink);
   background:var(--paper);
 }
@@ -16,12 +16,12 @@ body {margin:0}
 button,select {font:inherit;color:inherit}
 button {cursor:pointer}
 button:disabled {cursor:default;opacity:.43}
-button:focus-visible,select:focus-visible,summary:focus-visible {outline:3px solid #665cf4;outline-offset:3px}
+button:focus-visible,select:focus-visible,summary:focus-visible,a:focus-visible {outline:3px solid #665cf4;outline-offset:3px}
 [hidden] {display:none!important}
 .masthead {background:#242655;color:#fff}
 .mast-inner {max-width:1512px;margin:auto;min-height:66px;padding:0 clamp(20px,4vw,62px);display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand {display:flex;align-items:center;gap:12px;font-weight:800;font-size:17px;white-space:nowrap}
-.mast-meta {color:#d9dcf6;font-size:13px;letter-spacing:.04em}
+.brand {display:flex;align-items:center;gap:12px;font-weight:800;font-size:17px}
+.mast-meta {text-underline-offset:4px;color:#d9dcf6;font-size:13px;letter-spacing:.04em}
 main {max-width:1512px;margin:auto;padding:34px clamp(20px,4vw,62px) 46px}
 .layout {display:grid;grid-template-columns:188px minmax(0,1fr);gap:34px}
 #catalog {border-right:1px solid var(--line);padding:7px 17px 8px 0}
@@ -87,7 +87,9 @@ pre {margin:0 10px 10px;overflow:auto;padding:14px;background:#28294f;color:#f3f
 @media(max-width:740px) {
   main {padding:17px 14px 30px}
   .mast-inner {padding:0 14px;min-height:57px}
-  .mast-meta {font-size:11px}
+  .brand {font-size:14px;gap:8px}
+  .brand svg {flex:none;width:24px;height:24px}
+  .mast-meta {font-size:11px;flex:none}
   .layout {display:block}
   #catalog {display:flex;gap:12px;overflow:auto;border:0;padding:0 0 8px;margin-bottom:16px;scrollbar-width:thin;scrollbar-color:#bfc4d9 transparent}
   .catalog-group {display:flex;gap:3px;align-items:center;flex:none}

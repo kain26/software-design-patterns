@@ -182,8 +182,8 @@ export function createStage({stage, canvas, labels, packet, fallback}, onResize)
   function draw(visible, roles, call, progress) {
     if (!renderer) {
       const members = [...visible].map(id=>pattern.nodes[id].name);
-      const flow = call ? `。${pattern.nodes[call[0]].name} 调用 ${pattern.nodes[call[1]].name} 的 ${call[2]}` : '';
-      fallback.textContent = `此浏览器暂无法显示 3D。当前对象：${members.join('、')}${flow}。播放控制和步骤讲解仍可用。`;
+      const flow = call ? `. ${pattern.nodes[call[0]].name} calls ${call[2]} on ${pattern.nodes[call[1]].name}` : '';
+      fallback.textContent = `This browser cannot display 3D. Current objects: ${members.join(', ')}${flow}. Playback controls and step explanations are available.`;
       return;
     }
     for (const [id,{mesh,label,role}] of Object.entries(nodes)) {
@@ -191,7 +191,7 @@ export function createStage({stage, canvas, labels, packet, fallback}, onResize)
       label.dataset.active = Boolean(call?.slice(0,2).includes(id));
       label.dataset.pending = pending;
       mesh.visible = !pending;
-      const text = pending ? '等待创建或启用' : (roles[id] ?? pattern.nodes[id].role);
+      const text = pending ? 'Not active yet' : (roles[id] ?? pattern.nodes[id].role);
       if (role.textContent !== text) {
         role.textContent = text;
         position(label,mesh.position,9);
